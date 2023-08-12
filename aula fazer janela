@@ -1,0 +1,190 @@
+
+
+--------Criar janela definindo um valor fixo para o tamanha------
+
+package nome;
+import java.awt.*;
+
+public class NOME {
+
+    
+    public static void main(String[] args) {
+        Frame frame = new Frame("Janela");
+        frame.setSize(300,200);
+        frame.setVisible(true);
+    }
+    
+}
+
+----------------------------------------------------------------
+
+
+
+
+
+
+-------Criar janela com o tamanho do monitor do usuario------
+
+package nome;
+import java.awt.*;
+
+public class NOME {
+
+    
+    public static void main(String[] args) {
+        Frame frame = new Frame("Janela");
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenWidth = (int)screenSize.getWidth();
+        int screenHeight = (int)screenSize.getHeight();
+        
+        frame.setSize(screenWidth, screenHeight);
+        frame.setVisible(true);
+    }
+    
+}
+
+-------------------------------------------------------------
+
+
+
+
+
+--------Event para fechar janela e encerrar o funcionamento da pagina-----------
+
+package nome;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class NOME {
+
+    
+    public static void main(String[] args) {
+        Frame frame = new Frame("Por@#@#hub");
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenWidth = (int)screenSize.getWidth();
+        int screenHeight = (int)screenSize.getHeight();
+        
+        frame.setSize(screenWidth, screenHeight);
+        frame.setVisible(true);
+        
+        frame.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                    System.exit(0);
+            } 
+    });
+        
+    }
+    
+}
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+----Criar botão-------------------------------------------------------
+
+
+
+package nome;
+import java.awt.event.*;
+import java.awt.*;
+
+
+public class NOME {
+
+    
+    public static void main(String[] args) {
+        Frame frame = new Frame("Por@#@#hub"); //nome janela
+        
+        
+        
+        frame.setLayout(new GridLayout(5,2));
+        
+        Label label = new Label ("Digite algo:");
+        TextField textField = new TextField();
+        Label texto = new Label ("");
+                
+        Button b1 = new Button ("Copiar");
+        b1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                texto.setText(textField.getText());
+            
+            }
+                
+                
+        });
+        
+        frame.add(label);
+        frame.add(textField);
+        frame.add(b1);
+        frame.add(texto);
+        
+        
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenWidth = (int)screenSize.getWidth();
+        int screenHeight = (int)screenSize.getHeight();
+        
+        frame.setSize(screenWidth/2, screenHeight/2);
+        frame.setVisible(true);
+        
+        frame.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                    System.exit(0);
+            } 
+    });
+        
+    }
+    
+}
+
+------------------------------------------------------------
+
+
+
+--------------Layout basico calculadora--------------
+
+package calculator;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Calculator {
+    public static void main(String[] args) {
+    
+       Frame frame = new Frame("Calculadora");//Definindo frame
+       
+       TextField textField1, textField2, resultField;//Definindo caixas de textos
+       Button addButton;//Definindo botao
+       
+       textField1 = new TextField(10);//tamanho do texto1
+       textField2 = new TextField(10);//tamanho do texto2
+       resultField = new TextField(10);//tamanho resultado
+       
+       resultField.setEditable(false);//resultado não editável
+       
+       addButton = new Button("SOMAR");//nome do botão
+       
+       addButton.addActionListener(new ActionListener(){//ação para o botao
+           
+           public void actionPerformed(ActionEvent e){
+               
+               try{
+                   double num1 = Double.parseDouble(textField1.getText());
+                   double num2 = Double.parseDouble(textField2.getText());
+                   
+                   double result = num1 + num2;
+                   
+                   resultField.setText(Double.toString(result));
+               }catch(NumberFormatException ex){
+                   resultField.setText("Inválido");
+               }
+           }
+    });
+      }
+    
+}
