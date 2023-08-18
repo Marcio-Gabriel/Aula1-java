@@ -1,3 +1,4 @@
+https://docs.oracle.com/javase/8/docs/api/java/awt/package-summary.html    //documentação
 
 
 --------Criar janela definindo um valor fixo para o tamanha------
@@ -187,4 +188,63 @@ public class Calculator {
     });
       }
     
+}
+
+
+
+
+
+
+---------ver paridade do numero----------------------
+
+
+package janela;
+
+import java.awt.*;
+import java.awt.event.*;
+public class Janela {
+    
+
+    
+    public static void main(String[] args) {
+        
+        Frame frame = new Frame("Teste");//definir  frame e colocar nome na janel
+    frame.setLayout(new GridLayout( 5, 2));
+    
+    Label label = new Label("Digite um número inteiro: "); //Label
+    TextField textField = new TextField();//campo de escrita 
+    Label texto = new Label("");
+    
+    Button b1 = new Button("Texte funcional"); //definir botao
+    b1.addActionListener(new ActionListener(){ //colocar função para o clic do botão
+        public void actionPerformed(ActionEvent e){
+            try{
+                int teste = Integer.parseInt(String.valueOf(textField.getText()));
+                    if (teste % 2 == 0){
+                        texto.setText("É um número par.");
+                    }else{
+                        texto.setText("É um numero ímpar.");
+                    }
+            }catch (NumberFormatException ex){
+                
+            }
+        }
+    });
+    
+    frame.setSize(500, 150); //definir janela
+    frame.setVisible(true);
+    
+     frame.addWindowListener(new WindowAdapter(){ //botao de fechar
+            public void windowClosing(WindowEvent e){
+                    System.exit(0);
+            } 
+    });
+    
+     frame.add(label);
+     frame.add(textField);
+     frame.add(b1);
+     frame.add(texto);
+     
+    
+    }
 }
